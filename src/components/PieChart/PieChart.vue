@@ -1,23 +1,1 @@
-<template>
-
-</template>
-
-<script>
-import { Doughnut as PieChart, mixins } from"vue-chartjs";
-const { reactiveProp } = mixins
-console.log(reactiveProp)
-
-
-export default {
-  extends: PieChart,
-  mixins: [reactiveProp],
-  props: ['options'],
-  mounted () {
-    this.renderChart(this.chartData, this.options)
-  }
-}
-</script>
-
-<style scoped>
-
-</style>
+<script>import { Doughnut, mixins } from"vue-chartjs";export default {  extends: Doughnut,  mixins: [mixins.reactiveProp],  props: {    chartData: {      type: Object,      default: null    },    options: {      type: Object,      default: null    }  },  watch: {    chartData () {      this.$data._chart.update()    }  },  mounted () {    this.renderChart(this.chartData, this.options)  }}</script><style scoped></style>
