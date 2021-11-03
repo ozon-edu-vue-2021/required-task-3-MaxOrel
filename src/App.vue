@@ -32,15 +32,36 @@ export default {
     loadPeople() {
       this.people = people;
     },
-    handleClickTable(tableId){
+    handleClickTable(tableId, groupId){
       this.isUserOpenned = true;
-      this.selectedPeople = this.people[tableId];
+      this.selectedPeople = {...this.people[tableId], groupId};
     }
   }
 };
 </script>
 
 <style>
+@font-face {
+  font-family: 'Avenir';
+  src: url('~@/assets/fonts/AvenirNextCyr-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('~@/assets/fonts/AvenirNextCyr-Bold.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('~@/assets/fonts/AvenirNextCyr-Heavy.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     color: #2c3e50;
@@ -65,7 +86,7 @@ h3 {
 
 .office {
     display: grid;
-    grid-template-columns: 1fr 320px;
+    grid-template-columns: 1fr 520px;
     border-radius: 6px;
     border: 1px solid #ccd8e4;
     height: 100%;

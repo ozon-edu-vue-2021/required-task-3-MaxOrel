@@ -6,10 +6,11 @@
           <h3>Информация</h3>
         </template>
         <template v-else>
+           <h3>Профиль</h3>
+
           <div class="action">
-            <div class="arrow" @click="closeProfile"></div>
+            <close :size="35" @click="closeProfile"></close>
           </div>
-          <h3>Профиль</h3>
         </template>
       </div>
       <div class="toolbar__actions"></div>
@@ -42,7 +43,7 @@
       <div v-else class="profile">
         <div v-if="!person" class="profile__empty">Место пустое</div>
 
-        <PersonCard :person="person" />
+        <PersonCard :person="person"/>
       </div>
     </div>
   </div>
@@ -51,10 +52,10 @@
 <script>
 import Draggable from "vuedraggable";
 import PieChart from "./PieChart/PieChart.vue";
-
 import LegendItem from "./SideMenu/LegendItem.vue";
 import PersonCard from "./SideMenu/PersonCard.vue";
 import legend from "@/assets/data/legend.json";
+import Close from "icons/Close.vue"
 
 export default {
   props: {
@@ -72,6 +73,7 @@ export default {
     PersonCard,
     Draggable,
     PieChart,
+    Close,
   },
   data() {
     return {
@@ -103,7 +105,6 @@ export default {
           },
         ],
       };
-      // this.$refs.chart.renderChart(this.legendChartData, this.options);
     },
   },
   watch: {
@@ -151,8 +152,15 @@ export default {
 
 .toolbar__header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 12px;
+  width: 100%;
+}
+
+.toolbar__header h3 {
+  font-weight: 500;
+  font-size: 28px;
 }
 
 .toolbar__header .action {

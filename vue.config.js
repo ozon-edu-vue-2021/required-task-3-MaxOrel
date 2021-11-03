@@ -1,7 +1,8 @@
+const path = require('path');
 module.exports = {
     chainWebpack: (config) => {
         const svgRule = config.module.rule('svg');
-
+        config.resolve.alias.set('icons', path.resolve('node_modules/vue-material-design-icons'));
         svgRule.uses.clear();
 
         svgRule

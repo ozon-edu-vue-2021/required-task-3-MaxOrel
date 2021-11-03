@@ -70,7 +70,7 @@ export default {
           .attr("group_id", table.group_id)
           .classed("table", true)
           .html(this.tableSVG.html())
-          .on("click", () => this.$emit("click-table", table._id))
+          .on("click", () => this.$emit("click-table", table._id, table.group_id))
           .attr(
             "fill",
             legend.find((it) => it.group_id === table.group_id)?.color ??
